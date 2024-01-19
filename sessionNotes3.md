@@ -1,21 +1,19 @@
-/** Optimizing our App **/
+/** Jo Dikhta Hai, Vo Bikta Hai **/
 
-E9 P3 - TOPICS
-Online Offline feature(Checks if the user is online or not/ Users internet is active or not)
+E10 P3 - TOPICS
 
-> We will build this feature using custom hook
-> Writing a custom hook -> First finalize the contract(What is the input and output of the hook)
-> We dont need any information from the caller(where we use this hook) -from the component which is calling it
+## Using Tailwindcss
 
-## Event Listner
-
-> Browser gives us access to this window object - online event listner
-> Event listner is a super power given to us by the browser and window object
-
-    window.addEventListener("offline", () => {
-        setOnlineStatus(false);
-    });
-
-    window.addEventListener("online", () => {
-      setOnlineStatus(true);
-    });
+> We are going to put css using "classnames" for every css
+> GIving our head classname as "flex"
+> Decrease the with of the image - "w-8" -> gives the width
+> p-8 -> padding on all sides
+> flex -> flexes the item
+> m-4 -> gives a margin
+> Super power while using taildwindcss - Tailwind CSS intelliSense (Extension for VS Code)
+> sm - small, md -medium, lg - large, xl - extra large
+> px -> padding to left and right together
+> For custom values we use it inside [] i.e w-[200px] // dynamic classes
+> Tailwind also gives us pre-built components
+> Comes with the initial learning curve, and makes the code look ugly
+> It is very light weight (parcel includes only the css what is being used)

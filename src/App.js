@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ResturantMenu from "./components/ResturantMenu";
 import Shimmer from "./components/Shimmer";
+import Search from "./components/Search";
 //import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -20,7 +21,7 @@ const AppLayout = () => {
     <div className="app">
       <Header />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
@@ -30,6 +31,10 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
+      {
+        path: "/search",
+        element: <Search />,
+      },
       {
         path: "/",
         element: <Body />,

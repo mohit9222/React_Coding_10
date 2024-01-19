@@ -1,55 +1,57 @@
-/** Optimizing our App **/
+/** Jo Dikhta Hai, Vo Bikta Hai **/
 
-E9 P2 - TOPICS
+E10 P2 - TOPICS
+Tailwind CSS
+Configuring CSS
 
-## Custom Hooks (Contin...)
+## Tailwind CSS
 
-> Creating a custom hook is not madatory but it is good because it makes our code Maintainable, resuable, redeable
-> Ex: ResturantMenu does two things: 1. Fetches the data 2. Displaying the data on the UI
-> It shouldnt worry about the fetch
+> Rapidly build modern websites without ever leaving your HTML
+> Dont have to leave you HTML/JSX and still style your components without switching files
+> Works with all Frameworks and normal CSS/JS
 
-> Ex : If we could create a custom hook
+## Configuring Tailwind CSS
 
-const resInfo = useResturantMenu();
-//abstracting the fetch data logic and put it indside the custom hook
-key take aways - It doesnt need to worry about fetching, managing the state, it needs to worry about how to display this data
-ResturantMenu() -> Has a Single Responsibility, doesnt have to worry about the implementation of this new hook
+> We need to first click on Framework Guides -> Parcel (Since we are using Parcel)
+> It comes as a package(installs two packages tailwindcss and postcss)
 
-## How do we write our custom Hook
+npm install -D tailwindcss postcss
+npx tailwindcss init (We are initalizing the tailwindcss into our repository)
 
-Hooks are normal utility functions/ helper functions
-Best way to create these helper/utility functions are in utils folder
+npx tailwindcss init - creates a tailwind.config.js (Automatically created)
 
-Good Practices while creating a custom hook -
+## postcss(tailwindcss uses postcss behind the scenes)
 
-1. Seperate file for a seperate hook
-2. File name will be the same name of the hook
-3. start with small case and "use" -> react understands its a hook
+> Tool for transforming CSS with javascript
+> Bascially if we want to transform CSS inside javascript we use postcss
 
-what is the responsibilty of this hook - takes a resId and its job is to return a resturant resInfo after fetching the data
+## Create a configuration for postcss
 
-import { useEffect, useState } from "react";
-import { MENU_URL } from "./constants";
+> Create a .postcssrc file in your project root, and enable the tailwindcss plugin.
+> We write the below code in our .postcssrc file
 
-const useResturantMenu = (resId) => {
-const [resInfo, setResInfo] = useState(null);
-useEffect(() => {
-fetchData();
-}, []);
+{
+"plugins": {
+"tailwindcss": {}
+}
+}
 
-const fetchData = async () => {
-const data = await fetch(MENU_URL + resId);
-const json = await data.json();
-setResInfo(json.data);
-};
+> Telling our postcss that we are using tailwindcss
+> NOTE - Parcel(bundler) need to use postcssrc to read/understand tailwindcss
 
-return resInfo;
-};
+## Configure your template paths in tailwind.config.js
 
-export default useResturantMenu;
+content: [
+"./src/**/*.{html,js,ts,jsx,tsx}",
+],
 
-we have a custom hook -> what it takes as the input, what it gives as a output
-We fetch the data just like how we do it in a normal function inside a custom hook
+> this configuration means the content attribute takes an array/list of the files where I can use my tailwindcss
+> what files we can find our tailwindcss
 
-We create local state variables inside our hooks as well
-It hepls in testing, suppose we want to test our fetching then we will test the useResturantMenu Hook directly. Similarly if we want to test the displaying the data we will test the ResturatMenu.js file
+## Add the Tailwind directives to your CSS
+
+Adding these in our index.css file/ adding tailwindcss into our file
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
